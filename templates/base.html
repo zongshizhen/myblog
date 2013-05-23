@@ -1,0 +1,65 @@
+<!DOCTYPE html><html>
+<head>
+<meta charset="UTF-8" />
+<title>
+{% block title %}{% endblock %}
+</title>
+<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+<script src="/static/js/jquery-2.0.0.min.js"></script>
+{% block extra_head %}
+{% endblock %}
+</head>
+<body>
+{% block body %}
+{% block header %}
+{# 任何每个⻚页面面都可能修改的文文本区域的⻚页面面 #}
+{% block menu %}
+{# 你的菜单 (导航栏) 应该包含在这个区块中. 它是针对站点级的导
+航, 不是 每个⻚页面面专属的导航菜单. #}
+{% endblock %}
+{% endblock %}
+<div class="container">
+{% block content %}
+{# 这个区块用用来放置⻚页面面正文文内容. 任何⻚页面面正文文内容都可能不一一样.它不 包含任何站点导航, 信息头, ⻚页脚, 或其它任何属于 base 模板的东东. #}
+<div class="container-fluid">
+<div class="row-fluid">
+<div class="span9">
+{% block article %}
+{% block article_title %}
+{% comment %}
+用用来指定 content 区块的 "title". 比比如
+blog 的标题.
+也可以用用来 包含 content 内的导航 (译注:
+比比如提纲), 或其它类似的东东.
+大大致都是些 ⻚页面面中并非非主要内容的东东.
+我不知道这个区块是否应该放到 content
+tag 内, 并且对应于前面面建议的 content tag,
+是不是还需要一一个 main_content 区块.
+{% block [section]_menu %} 
+{%block page_menu %}
+这是对应于之前建议的 menu 区块. 用用来导航
+一一个章节或⻚页面面.
+{% endcomment %}
+{% endblock %}
+{% block article_content %}
+{% endblock%}
+{% endblock %}
+{% block article_menu %} {% endblock %}{% block comments %} {% endblock %}
+</div>
+<div class="span3">
+{% block aside %}
+{% block tags %}{% endblock %}
+{% endblock %}
+</div>
+</div>
+</div>
+{% endblock %}
+{% block footer %}
+{# 任何每个⻚页面面都可能修改的文文本区域的⻚页脚 #}
+<p>Thanks for visiting my site! </p>
+{% endblock %}
+{% endblock%}
+</div>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
